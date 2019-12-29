@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app">
+        <p v-once>
+            {{message}}
+        </p>
+        <button v-on:click="clickHandler">click!</button>
+
+        <p v-pre>
+            {{message}}
+        </p>
+
+        <p v-html="htmlMessage"></p>
+
+        <p v-cloak>
+            {{cloakMessage}}
+        </p>
+
+        <p v-text="message"></p>
+
+        <p>
+            {{text.split('').reverse().join('')}}
+            {{number * 2}}
+            {{ ok? 'yes' : 'no'}}
+        </p>
+
+        <p>
+            {{price | numberFormat}}
+        </p>
+        <input type="text" v-bind:value="price | numberFormat">
+        <p>
+            {{price | globalNumberFormat}}
+        </p>
+
+        <p>
+            {{jpyPrice | toUSD | numberFormat}}
+        </p>
+
+        <p>{{sentence | readMore(20, '...') }}</p>
+
+        <a :href="url" target="_blank">Link</a>
+
+        <!-- for debug -->
+        <p> {{ $data }} </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.11"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
