@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <p> {{ message }}</p>
+        <p><input type="text" v-model:value="message"></p>
+
+        <p><input type="text" v-model:value="km">km</p>
+        <p><input type="text" v-model:value="m">m</p>
+        <p><input type="text" v-model:value="mm">mm</p>
+
+        <p>first name: <input type="text" v-model:value="firstName"></p>
+        <p>last name: <input type="text" v-model:value="lastName"></p>
+        <p>full name: {{fullName}}</p>
+
+        <ul>
+            <li v-for="color in colors">
+                {{ color.name }}
+            </li>
+        </ul>
+
+        <pre>{{$data}}</pre>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.11"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
