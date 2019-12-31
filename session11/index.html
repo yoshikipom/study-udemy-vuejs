@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app">
+        <p>{{count}}</p>
+        <p>{{message}}</p>
+        <button v-on:click="count++">click</button>
+        <button v-on:click="countUp('vuejs', $event)">click2</button>
+
+        <button v-on:click.once="clickHandler">now</button>
+        <p>{{timeMessage}}</p>
+
+        <!-- <input type="text" v-on:keyup.esc.space.up="clear" v-model="escMessage"> -->
+        <input type="text" v-on:keyup.ctrl.67="clear" v-model="escMessage">
+        <p>{{escMessage}}</p>
+
+        <div v-on:click.shift="clickMe">click me with shift key</div>
+
+        <button v-on:click="clickMe">click</button>
+        <button @click="clickMe">ommited click</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.11"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
