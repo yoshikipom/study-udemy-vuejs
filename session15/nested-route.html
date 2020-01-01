@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/users/123">go to user</router-link>
+    <router-link to="/users/123/profile">profile</router-link>
+    <router-link to="/users/123/post">posts</router-link>
+
+    <router-view></router-view>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-router@3.0.6/dist/vue-router.min.js"></script>
+  <script>
+    const User = {
+      template: `
+      <div class="user">
+          <h2>user {{$route.params.userId}}</h2>
+          <router-view></router-view>
+      </div>
+            `
+    };
+    const Profile = {
+      template: `
+        <div class="user">
+            <h2> profile {{$route.params.userId}}</h2>
+        </div>
+        `
+    };
+    const Post = {
+      template: `
+        <div class="user">
+            <h2> Posts {{$route.params.userId}}</h2>
+        </div>
+        `
+    };
+
+    const router = new VueRouter({
+      routes: [
+        {
+          path: '/users/:userId',
+          component: User,
+          children: [
+            {
+              path: 'profile',
+              component: Profile,
+            },
+            {
+              path: 'post',
+              component: Post,
+            }
+          ]
+        },
+      ]
+    })
+
+    const app = new Vue({
+      router: router
+    }).$mount('#app');
+  </script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

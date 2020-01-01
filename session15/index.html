@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/top">go to top</router-link>
+        <router-link to="/users/123">go to user</router-link>
+        <router-link :to="{name:'user',params: {userId: 123}}">go to user</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@3.0.6/dist/vue-router.min.js"></script>
+    <script>
+        const Top = { template: '<div>Top</div>' };
+        const Users = { template: '<div>Users {{$route.params.userId}}</div>' };
+        const router = new VueRouter({
+            routes: [
+                {
+                    path: '/top',
+                    component: Top
+                },
+                {
+                    path: '/users/:userId',
+                    name: 'user',
+                    component: Users
+                },
+            ]
+        })
+
+        const app = new Vue({
+            router: router
+        }).$mount('#app');
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

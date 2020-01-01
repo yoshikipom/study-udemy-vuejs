@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="app">
+    <router-link to="/">Home</router-link>
+    <router-link to="/a">A</router-link>
+    <router-link to="/b">B</router-link>
+
+    <router-view></router-view>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-router@3.0.6/dist/vue-router.min.js"></script>
+  <script>
+    const A = {
+      template: '<div>this is A</div>'
+    }
+
+    const router = new VueRouter({
+      routes: [
+        {
+          path: '/a',
+          component: A,
+          alias: '/b'
+        },
+      ]
+    })
+
+    const app = new Vue({
+      router: router
+    }).$mount('#app');
+  </script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
